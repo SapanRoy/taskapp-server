@@ -85,8 +85,6 @@ const moveCard = function (sourceListId, targetListId, cardId) {
         // console.log("--------------------------------");
         // console.log(`dragged Card-${JSON.stringify(card)}`);
 
-
-
         // delete from source
         deleteCard(sourceListId, card);
         let cardData = new Object();
