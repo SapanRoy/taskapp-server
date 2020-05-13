@@ -1,0 +1,9 @@
+const HTTP_STATUS_CODE = {
+    OK: 200,
+    CREATED: 201,
+    NOCONTENT: 204,
+    BADREQUEST: 400,
+    INTERNALSERVERERROR: 500
+}
+
+module.exports = HTTP_STATUS_CODE;
