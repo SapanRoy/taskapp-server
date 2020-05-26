@@ -6,7 +6,7 @@ const HTTPSTATUSCODE = require('../constant/app-const');
 const addCard = function (req, res) {
     try {
         let newCardListMapping = cardService.addCard(req);
-        return res.status(HTTPSTATUSCODE.CREATED).json({ "cardList": newCardListMapping });
+        return res.status(HTTPSTATUSCODE.CREATED).json({ "card": newCardListMapping });
     }
     catch (err) {
         res.status(HTTPSTATUSCODE.INTERNALSERVERERROR).json({ error: err.toString() });
