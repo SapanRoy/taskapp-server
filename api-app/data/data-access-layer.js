@@ -7,13 +7,33 @@ const shortid = require('shortid');
 
 const addList = function(listData) {
     try {
+        let allList = Array.from(getAllList());
+        let foundList = allList.filter(((item) => {
+            return item.name == listData.name;
+        }));
+        if (foundList.length > 0)
+            throw `List [${listData.name}] already exist.`;
+
         let id = shortid.generate();
+
         db.push("/lists[]", { id: id, name: listData.name }, true);
         return getListById(id);
     } catch (err) {
         throw err;
     }
 };
+
+const editList = function(list) {
+    try {
+        existingList = getListById(list.id);
+        existingList.name = listData.name;
+        deleteList(list.id);
+        addList(existingList);
+        return existingList;
+    } catch (err) {
+        throw err;
+    }
+}
 
 const getAllList = function() {
     try {
@@ -93,6 +113,7 @@ const getCardFromList = function(cardListParam) {
 module.exports = {
     addList: addList,
     deleteList: deleteList,
+    editList: editList,
     getListById: getListById,
     getAllList: getAllList,
     getCardFromList: getCardFromList,

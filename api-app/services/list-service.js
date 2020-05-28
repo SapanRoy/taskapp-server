@@ -1,61 +1,65 @@
 "use strict";
 const cardListDAL = require('../data/data-access-layer');
 
-const addList = function (req) {
+const addList = function(req) {
     try {
         if (!req.body.name) {
             throw 'List name is required.'
         }
         return cardListDAL.addList(req.body);
-    }
-    catch (error) {
+    } catch (error) {
         throw error;
     }
 }
 
-const deleteList = function (id) {
+const editList = function(req) {
     try {
-        cardListDAL.deleteList(id);
-    }
-    catch (error) {
+        if (!req.body.name) {
+            throw 'List name is required.'
+        }
+        return cardListDAL.editList(req.body);
+    } catch (error) {
         throw error;
     }
 }
-const getListById = function (id) {
+
+const deleteList = function(id) {
+    try {
+        cardListDAL.deleteList(id);
+    } catch (error) {
+        throw error;
+    }
+}
+const getListById = function(id) {
     try {
         let list = cardListDAL.getListById(id);
         return list;
-    }
-    catch (error) {
+    } catch (error) {
         throw error;
     }
 }
-const getAllList = function () {
+const getAllList = function() {
     try {
-        return cardListDAL.getAllList() ;;
-    }
-    catch (error) {
+        return cardListDAL.getAllList();;
+    } catch (error) {
         throw error;
     }
 }
 
-const getCardFromList = function (cardListParam) {
+const getCardFromList = function(cardListParam) {
     try {
         let card = cardListDAL.getCardFromList(cardListParam);
         return { "id": card.id, "name": card.name, "parentListId": cardListParam.listId };
-    }
-    catch (err) {
+    } catch (err) {
         throw err;
     }
 }
 
 module.exports = {
     addList: addList,
+    editList: editList,
     deleteList: deleteList,
     getListById: getListById,
     getAllList: getAllList,
     getCardFromList: getCardFromList
 };
-
-
-
