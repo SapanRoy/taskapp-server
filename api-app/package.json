@@ -13,7 +13,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "lowdb": "^1.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "morgan": "^1.9.1",
     "node-json-db": "^1.1.0",
     "shortid": "^2.2.15"
